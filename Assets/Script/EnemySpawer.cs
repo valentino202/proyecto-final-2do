@@ -6,8 +6,4 @@ public class EnemySpawer : MonoBehaviour
    [SerializeField]private float timeTospawn = 5;
    private float currenntnay;
   
-
-
-
-
 }
