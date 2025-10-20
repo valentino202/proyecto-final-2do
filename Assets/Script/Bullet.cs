@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = Vector2.up * speed;
+        
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -38,6 +39,9 @@ public class Bullet : MonoBehaviour
     public void SerVelocity(Vector2 direccion, float newSeed)
     {
         speed = newSeed;
+        if (rb == null)
+            rb = GetComponent<Rigidbody2D>();
+
         rb.linearVelocity = direccion.normalized * speed;
     }
 
