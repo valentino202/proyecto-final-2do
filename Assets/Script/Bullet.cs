@@ -10,7 +10,6 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Bounce"))
@@ -19,23 +18,6 @@ public class Bullet : MonoBehaviour
 
             ContactPoint2D contact = collision.contacts[0];
             print("Punto de contacto: " + contact.point);
-
-
-            Vector2 vl = rb.linearVelocity;
-            Vector2 normal = collision.contacts[0].normal;
-
-
-             rb.linearVelocity = Vector2.zero;
-            Debug.Log("la velocidad se mantine zero");
-
-            float magnitud = vl.magnitude;
-            Vector2 nuevaDireccion = Vector2.zero;
-
-            if (Mathf.Abs(normal.x) == Mathf.Abs(normal.y))
-            {
-
-            }
-
 
         }
         else if (!collision.gameObject.CompareTag("Bounce"))
