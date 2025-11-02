@@ -25,6 +25,14 @@ public class ShieldController : MonoBehaviour
         
         transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f); 
 
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Bullet bullet = collision.GetComponent<Bullet>();
+        if (bullet != null && !bullet.FirsBounce) 
+        {
+            Destroy(bullet.gameObject);
+        }
     }
 }

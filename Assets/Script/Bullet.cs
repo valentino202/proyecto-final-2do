@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
     private bool firstBounce = true;
 
 
-
+    public bool FirsBounce => firstBounce;
     private void Start()
     {   
         rb = GetComponent<Rigidbody2D>();
