@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Net;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -8,7 +9,9 @@ public class Bullet : MonoBehaviour
     public Transform originFirePoint;
    [SerializeField] private float velocity = 10f;
     Rigidbody2D rb;
-    private bool reboto = false;
+    private bool rebound = false;
+    private bool firstBounce = true;
+
 
 
     private void Start()
@@ -22,7 +25,7 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        if (reboto && rb != null && rb.linearVelocity != Vector2.zero)
+        if (rebound && rb != null && rb.linearVelocity != Vector2.zero)
         {
             float angle = Mathf.Atan2(rb.linearVelocity.y, rb.linearVelocity.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, angle-90f);
@@ -33,19 +36,31 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bounce"))
         {
-            Debug.Log("la bala colicciono con el " + collision.gameObject + " puede rebotar");
+   
             ContactPoint2D contact = collision.contacts[0];
-            print("Punto de contacto: " + contact.point);
-            reboto = true;
+            rebound = true; 
 
-            int x = (originFirePoint == shooter.firePoint1) ? 1 : -1;
+            Vector2 dir = rb.linearVelocity.normalized;
+            Vector2 normal = contact.normal;
 
-            int y = (contact.point.y > transform.position.y) ? -1 : 1;
+            if(firstBounce)
+            {
+                int x = (originFirePoint == shooter.firePoint1) ? 1 : -1;
 
-            Vector2 nuevaDireccion = new Vector2(x, y).normalized;
-            rb.linearVelocity = nuevaDireccion * velocity;
-
-            Debug.Log($"Rebote manual con dirección:" + nuevaDireccion);
+                int y = (normal.y < 0) ? 1 : -1;
+                dir = new Vector2(x, y).normalized;
+                firstBounce = false;
+            }
+            else
+            {
+                if(Mathf.Abs(normal.x)> 0.5f)
+                    dir.x *=-1;
+                if (Mathf.Abs(normal.y) > 0.5f)
+                    dir.y *=-1;
+            }
+           
+           rb.linearVelocity = dir * velocity;
+           
 
         }
         else if (!collision.gameObject.CompareTag("Bounce"))
