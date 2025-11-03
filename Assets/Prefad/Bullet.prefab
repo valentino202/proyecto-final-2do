@@ -129,6 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0cd90401830294b8c04931bb92fe7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shooter: {fileID: 0}
+  originFirePoint: {fileID: 0}
+  velocity: 10
 --- !u!61 &-3918894291457716754
 BoxCollider2D:
   m_ObjectHideFlags: 0

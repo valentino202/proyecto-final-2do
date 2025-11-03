@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     Rigidbody2D rb;
     private bool rebound = false;
     private bool firstBounce = true;
+    [SerializeField]private int damage = 5;
 
 
     public bool FirsBounce => firstBounce;
@@ -63,11 +64,18 @@ public class Bullet : MonoBehaviour
            
 
         }
-        else if (!collision.gameObject.CompareTag("Bounce"))
+        else
         {
-            Debug.Log("la bala no puede rebotar en "+ collision.gameObject);
+            IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+            if (damageable != null)
+            {
+
+                damageable.TakeDamage(damage);
+            }
+
             Destroy(gameObject);
         }
+
 
     }
 }

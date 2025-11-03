@@ -1,27 +1,22 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Player : MonoBehaviour
+public class Player : Ships
 {
-    [SerializeField] private float moveSpeed = 5f;
-    private Rigidbody2D rb;
-    private Vector2 movement;
-    void Start()
+    protected override void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        base.Start();
     }
 
 
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+       
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
 
-        movement = movement.normalized;
+        moveDireccion = new Vector2(moveX, moveY).normalized;
     }
 
-    private void FixedUpdate()
-    {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-    }
+   
 }
