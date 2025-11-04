@@ -3,11 +3,11 @@ using UnityEngine;
 public abstract class Ships : MonoBehaviour, IDamageable
 {
     [Header("Ship Settings")]
-    [SerializeField] protected float moveSeed = 5F;
-    [SerializeField] protected int health = 10;
+    [SerializeField] protected float moveSpeed;
+    [SerializeField] protected int health;
 
     protected Rigidbody2D rb;
-    protected Vector2 moveDireccion;
+    protected Vector2 moveDirection;
 
     protected virtual void Start()
     {
@@ -18,7 +18,7 @@ public abstract class Ships : MonoBehaviour, IDamageable
 
     protected virtual void FixedUpdate()
     {
-        rb.linearVelocity = moveDireccion *moveSeed;
+        rb.linearVelocity = moveDirection * moveSpeed;
     }
 
     public void TakeDamage(int amount)

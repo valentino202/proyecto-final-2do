@@ -15,7 +15,7 @@ public class Player : Ships
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
-        moveDireccion = new Vector2(moveX, moveY).normalized;
+        moveDirection = new Vector2(moveX, moveY).normalized;
     }
 
    
