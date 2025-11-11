@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2397472769906194826}
   - component: {fileID: 2124988869438083106}
   - component: {fileID: 2998552612069422905}
-  - component: {fileID: -3918894291457716754}
+  - component: {fileID: 1182435958580879211}
   m_Layer: 6
   m_Name: Bullet
   m_TagString: Untagged
@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 5951793557015232381}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.70576, y: 1.14929, z: 0}
-  m_LocalScale: {x: 0.1608844, y: 0.27118212, z: 1}
+  m_LocalPosition: {x: -3.7223, y: 1.0868, z: 0}
+  m_LocalScale: {x: 0.19401732, y: 0.20870656, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -132,9 +132,9 @@ MonoBehaviour:
   shooter: {fileID: 0}
   originFirePoint: {fileID: 0}
   velocity: 10
-  damage: 5
---- !u!61 &-3918894291457716754
-BoxCollider2D:
+  damage: 1
+--- !u!70 &1182435958580879211
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -167,15 +167,6 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 2}
-    newSize: {x: 1, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 2}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.006902806, y: 0}
+  m_Size: {x: 1.0138055, y: 2}
+  m_Direction: 0
