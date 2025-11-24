@@ -10,4 +10,6 @@ public class ShieldTrigger : MonoBehaviour
             Destroy(bullet.gameObject);
         }
     }
+
+
 }

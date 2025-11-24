@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f1909e97455ba9b48830bf27a78fa519
+guid: 60c906971e18b944ebb413f9e59fa8fd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2299428717319093775
-    second: pez-fotor-bg-remover-20251104184232_0
+      213: -4876750022250072565
+    second: fondo, fondo_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pez-fotor-bg-remover-20251104184232_0
+      name: fondo, fondo_0
       rect:
         serializedVersion: 2
-        x: 57
-        y: 184
-        width: 415
-        height: 161
+        x: 0
+        y: 0
+        width: 2598
+        height: 1417
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f0ef22a4c3639ef10800000000000000
-      internalID: 2299428717319093775
+      spriteID: b06f76161bd425cb0800000000000000
+      internalID: -4876750022250072565
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      pez-fotor-bg-remover-20251104184232_0: 2299428717319093775
+      fondo, fondo_0: -4876750022250072565
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

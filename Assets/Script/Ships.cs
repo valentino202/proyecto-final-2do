@@ -6,6 +6,8 @@ public abstract class Ships : MonoBehaviour, IDamageable
     [SerializeField] protected float moveSpeed;
     [SerializeField] protected int health;
 
+    public int  Health => health;
+
     protected Rigidbody2D rb;
     protected Vector2 moveDirection;
 

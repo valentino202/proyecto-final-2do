@@ -9,28 +9,40 @@ public class Bullet : MonoBehaviour
     public Transform originFirePoint;
    [SerializeField] private float velocity = 10f;
     Rigidbody2D rb;
+    private SpriteRenderer sr;
     private bool rebound = false;
     private bool firstBounce = true;
     [SerializeField]private int damage = 5;
-
-
+    [HideInInspector] public float initialAngle = 90f;
+    [HideInInspector] public Color initialColor = Color.cyan;
+    [HideInInspector] public Color bounceColor = Color.red;
     public bool FirsBounce => firstBounce;
+
     private void Start()
     {   
+
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
+
         if (shooter != null && originFirePoint != null)
         {
             Debug.Log("Bala creada desde: " + originFirePoint.name);
         }
+
+        if (sr != null)
+            sr.color = initialColor;
+
+
+        float rad = initialAngle * Mathf.Deg2Rad;
+        Vector2 dir = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)).normalized;
+        rb.linearVelocity = dir * velocity;
+
     }
 
     private void Update()
     {
-        if (rebound && rb != null && rb.linearVelocity != Vector2.zero)
-        {
             float angle = Mathf.Atan2(rb.linearVelocity.y, rb.linearVelocity.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, angle-90f);
-        }
+            transform.rotation = Quaternion.Euler(0, 0, angle-90f);   
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -46,11 +58,11 @@ public class Bullet : MonoBehaviour
 
             if(firstBounce)
             {
-                int x = (originFirePoint == shooter.firePoint1) ? 1 : -1;
+                firstBounce = false; 
 
-                int y = (normal.y < 0) ? 1 : -1;
-                dir = new Vector2(x, y).normalized;
-                firstBounce = false;
+
+                if (sr != null)
+                    sr.color = bounceColor;
             }
             else
             {
@@ -66,10 +78,13 @@ public class Bullet : MonoBehaviour
         }
         else
         {
+            // Ignorar el escudo
+            if (collision.gameObject.CompareTag("Shield"))
+                return;
+
             IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
             if (damageable != null)
             {
-
                 damageable.TakeDamage(damage);
             }
 
