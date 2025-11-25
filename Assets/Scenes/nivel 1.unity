@@ -434,7 +434,7 @@ GameObject:
   - component: {fileID: 258886366}
   - component: {fileID: 258886365}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: epawerr odstaculos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -460,7 +460,7 @@ MonoBehaviour:
   minX: -4
   maxX: 4
   spawnY: 10
-  fallSpeed: 2
+  fallSpeed: 1.1
 --- !u!4 &258886366
 Transform:
   m_ObjectHideFlags: 0

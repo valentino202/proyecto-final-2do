@@ -16,7 +16,7 @@ EditorBuildSettings:
     guid: 81fd84725e112094281dfcae7988410e
   - enabled: 1
     path: Assets/Scenes/perdiste.unity
-    guid: e1d58ae931a809145916c3c4d585db04
+    guid: 7b466e5e570065046aa43dbb2ddaa72c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
