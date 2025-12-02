@@ -1584,7 +1584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc7cdd10ad10e1419bf649d15d6bf37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiempoInicial: 2
+  tiempoInicial: 60
   timerText: {fileID: 1291612148}
   killText: {fileID: 1379104947}
   killsParaGanar: 10

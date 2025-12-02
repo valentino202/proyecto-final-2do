@@ -36,26 +36,29 @@ public class UIGameManager : MonoBehaviour
     {
         if (juegoTerminado) return;
 
-        // Timer
-        tiempoRestante -= Time.deltaTime;
-        if (tiempoRestante <= 0)
+    
+        if (player != null && player.Health <= 0)
         {
-            tiempoRestante = 0;
-        
-            TerminarJuego(killsActuales >= killsParaGanar);
+            Debug.Log("Estoy muerto devo canbiar esena");
+            TerminarJuego(false); 
+            return;
         }
 
         
-        else if (player != null && player.Health <= 0)
+        tiempoRestante -= Time.deltaTime;
+
+        if (tiempoRestante <= 0)
         {
-            TerminarJuego(false);
+            tiempoRestante = 0;
+            TerminarJuego(killsActuales >= killsParaGanar);
+            return;
         }
 
         ActualizarUI();
     }
 
-  
-    public void AñadirKill()
+
+        public void AñadirKill()
     {
         killsActuales++; 
     }
@@ -77,7 +80,7 @@ public class UIGameManager : MonoBehaviour
         }
     }
 
-    private void TerminarJuego(bool victoria)
+    public void TerminarJuego(bool victoria)
     {
         juegoTerminado = true;
 
