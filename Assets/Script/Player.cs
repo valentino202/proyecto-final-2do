@@ -32,8 +32,6 @@ public class Player : Ships
     private void OnMove(InputAction.CallbackContext context)
     {
         moveDirection = context.ReadValue<Vector2>();
-     
-
     }
     void Update()
     {

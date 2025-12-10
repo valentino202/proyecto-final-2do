@@ -8,65 +8,65 @@ public class SoundManager : MonoBehaviour
 
     public Dictionary<string, AudioClip> MusicData = new();
 
-    public GameObject AudioReproducerPrefad;
+    public GameObject AudioReproducerPrefab;
 
-    public int PoolSice = 10; 
+    public int PoolSize = 10;
 
-    public List<GameObject> AudioPool = new();   
+    public List<GameObject> AudioPool = new();
 
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
             Instance = this;
 
-        for(int i = 0; i < PoolSice; i++)
+        // Crear pool correctamente
+        for (int i = 0; i < PoolSize; i++)
         {
-            Instantiate(AudioReproducerPrefad);
-            {
-                GameObject obj = Instantiate(AudioReproducerPrefad, transform);
-                AudioPool.Add(obj);
-            }
+            GameObject obj = Instantiate(AudioReproducerPrefab, transform);
+            obj.SetActive(false);
+            AudioPool.Add(obj);
         }
-
-
     }
+
     void Start()
     {
         MusicData.Add("ClickButton", AudioClip1);
-        
     }
 
-    void Update()
-    {
-        
-    }
     public void PlaySound(string soundName, float volume)
     {
         if (MusicData.TryGetValue(soundName, out AudioClip clip))
         {
-            print(clip.name);
+            GameObject obj = GetAvalibleSoundReproducer();
+            if (obj == null)
+            {
+                print("NO HAY OBJETOS EN EL POOL");
+                return;
+            }
 
-            AudioSource audioSource = GetAvalibleSoundReproducer().GetComponent<AudioSource>();
+            AudioSource audioSource = obj.GetComponent<AudioSource>();
             audioSource.clip = clip;
             audioSource.volume = volume;
-            AudioReproducerPrefad.SetActive(true);
+
+            obj.SetActive(true); 
+
             audioSource.GetComponent<AudioReproducer>().SetAudio();
         }
         else
         {
             print("no existe");
         }
-        
     }
+
     public GameObject GetAvalibleSoundReproducer()
     {
-        foreach(var item in AudioPool)
+        foreach (var item in AudioPool)
         {
-            if (item.activeSelf == true)
-                return item;   
-        }  
-        return null;
+            if (!item.activeSelf)  
+                return item;
+        }
 
+        return null;
     }
 }
