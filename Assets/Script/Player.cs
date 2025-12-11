@@ -33,15 +33,7 @@ public class Player : Ships
     {
         moveDirection = context.ReadValue<Vector2>();
     }
-    void Update()
-    {
-       
-        //float moveX = Input.GetAxisRaw("Horizontal");
-       // float moveY = Input.GetAxisRaw("Vertical");
 
-       // moveDirection = new Vector2(moveX, moveY).normalized;
-    }
-  
 
     protected override void Die()
     {
